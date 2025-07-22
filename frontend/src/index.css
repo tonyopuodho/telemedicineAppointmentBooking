@@ -1,1 +1,26 @@
 @import "tailwindcss";
+body{
+  font-family: sans-serif;
+}
+
+.backgroundImage{
+  height: 100vh;
+  width: 100%;
+  background-image: url(/premium_photo-1661767897334-bbfb.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+}
+h1{
+  color: #007874;
+}
+.btn{
+  background-color: #007874;
+}
+.select{
+  border: 1px solid #007874;
+}
+input{
+  border: 1px solid #007874;  
+}
