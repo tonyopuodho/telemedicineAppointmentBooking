@@ -7,12 +7,32 @@ exports.loginuser = (request,response) => {
         conn.query(sqlQuerry,[username,password,role], (error,result) => {
             if (error) return response.json({status: false, Error: "Querry error"})
             if (result.length > 0) {
-                console.log(result.length)
+                 request.session.user = result[0].username
+                 return response.status(201).json({status: true, message: "login successfully"})
             } else{
-                console.log("user not found")
+                return response.json({status: false, message:"wrong email or password"})
             } 
         })
     } catch (error) {
-        
+        console.log(error)
     }
+}
+
+exports.username = (request,response) => {
+    request.session.visited = true
+
+    if(request.session.user) {
+        return response.status(200).json({valid: true, username: request.session.user})
+    } else{
+        return response.json({valid:false})
+    }
+}
+
+exports.logout = (request,response) => {
+    if (request.session.user !== undefined) {
+        request.session = null
+        response.clearCookie('connect.sid')
+    }
+    
+    response.json({status:true,message: "logout successfully"})
 }
