@@ -1,7 +1,14 @@
+import FullCalendar from '@fullcalendar/react'
+import dayGridPlugin from '@fullcalendar/daygrid' 
 
 const Calender = () => {
     return (
-        <h3>Calender component</h3>
+        <div>
+            <FullCalendar className="z-5"
+             plugins={[ dayGridPlugin ]}
+             initialView="dayGridMonth"
+            />            
+        </div>
     )
 }
 

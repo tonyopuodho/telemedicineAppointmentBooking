@@ -16,12 +16,12 @@ const Dashboard = () => {
                 <li><Link to={"/dashboard/manageDoctors"} className="flex items-center"><FaUserMd className="text-3xl"/>  <h2 className="ml-4 mt-2 text-xl font-bold">Manage doctors</h2></Link></li>
                 <li><Link to={"/dashboard/feedback"} className="flex items-center"><FaComment className="text-3xl"/>  <h2 className="ml-4 mt-2 text-xl font-bold">Feedback</h2></Link></li>
                 <li><Link to={"/dashboard/appointment"} className="flex items-center"><FaClipboardList className="text-3xl"/>  <h2 className="ml-4 mt-2 text-xl font-bold">Appointments</h2></Link></li>
-                <li><Link to={"/dashboard/calender"} className="flex items-center"><FaCalendarCheck className="text-3xl"/>  <h2 className="ml-4 mt-2 text-xl font-bold">Calender</h2></Link></li>
+                <li><Link to={"/dashboard/calender"} className="flex items-center"><FaCalendarCheck className="text-3xl"/>  <h2 className="ml-4 mt-2 text-xl font-bold">Calendar</h2></Link></li>
                 <li><Link to={"/dashboard/patient"} className="flex items-center"><FaUserFriends className="text-3xl"/>  <h2 className="ml-4 mt-2 text-xl font-bold">Patients</h2></Link></li>
                </ul>
             </div>
             <div className="w-[80%] ml-[20%]">
-                <nav className="w-full shadow-md top-0 sticky h-[10vh] bg-white "></nav>
+                <nav className="w-full shadow-md top-0 sticky h-[10vh] bg-white"></nav>
                 <Outlet/>
             </div>
         </div>
