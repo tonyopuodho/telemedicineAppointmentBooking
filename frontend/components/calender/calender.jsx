@@ -3,10 +3,16 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 
 const Calender = () => {
     return (
-        <div>
-            <FullCalendar className="z-5"
+        <div className='p-6'>
+            <FullCalendar
              plugins={[ dayGridPlugin ]}
              initialView="dayGridMonth"
+             headerToolbar={{
+                start:"today,prev,next",
+                center:"title",
+                end:"dayGridMonth, dayGridWeek ,dayGridDay"                
+             }}
+             height={'85vh'}
             />            
         </div>
     )

@@ -7,6 +7,7 @@ import Appointment from "../components/appointment/appointment"
 import Calender from "../components/calender/calender"
 import Patients from "../components/patients/patients"
 import Home from "../components/dashboard/home"
+import Register from "../components/register/register"
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
 
   return (
     <Routes>
+      <Route path="register" element={<Register/>}/>
       <Route path="/login" element={<LoginPage/>} />
       <Route path="/dashboard" element={<Dashboard/>}>
         <Route path="" element={<Home/>}></Route>

@@ -1,8 +1,8 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { FaSpinner } from 'react-icons/fa'
 import '/src/index.css'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 const LoginPage = () => {
     const [login, setLogin] = useState([])
@@ -15,7 +15,6 @@ const LoginPage = () => {
     const handleSubmit = (event) => {
         event.preventDefault()
         setLoading(true)
-        console.log(login)
         axios.post("http://localhost:3000/auth/login",login)
         .then(result => {
             if (result.data.status) {
@@ -29,6 +28,17 @@ const LoginPage = () => {
         })
         .catch(error => console.log(error))
     }
+        useEffect(() => {
+            axios.get('http://localhost:3000/auth/username')
+            .then(result => {
+                if(result.data.valid) {
+                    navigate('/dashboard')
+                } else {
+                    navigate('/login')
+                }
+            })
+            .catch(error => console.log(error))
+        },[])
 
     return (
         <div className={"backgroundImage"}>
@@ -48,6 +58,7 @@ const LoginPage = () => {
                         <option value="patient">patient</option>
                     </select>
                     <button className='btn w-full font-bold cursor-pointer p-3 rounded-md mt-2 flex justify-center'>{loading ? <FaSpinner className='animate-spin h-6 w-6'/> : "Login"}</button>
+                    <p className="text-sm pt-2">Don't have an account? <Link to={'/register'} className="text-md font-bold">click to register</Link></p>
                 </form>
             </div>
         </div>
