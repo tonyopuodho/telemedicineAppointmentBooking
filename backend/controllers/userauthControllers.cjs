@@ -1,5 +1,5 @@
 const { default: conn } = require("../configs/db")
-const { hashPassword } = require("../configs/hashpassword")
+const { hashPassword, comparePassword } = require("../configs/hashpassword")
 
 exports.registerUser = (request,response) => {
     const {firstName,lastName,email,phone,dateOfbirth,gendar,address,password} = request.body
@@ -12,5 +12,27 @@ exports.registerUser = (request,response) => {
          })
     } catch (error) {
         
+    }
+}
+
+exports.loginpatient = (request,response) => {
+    const {username,password,role} = request.body
+    try {
+        const sqlQuerry = "SELECT * FROM patient WHERE lastName = ? AND role = ?"
+        conn.query(sqlQuerry,[username,role], (error,result) => {
+            if (error) return response.json({status:false, message:"Querry error"})
+            if (result.length > 0) {
+                const pass = comparePassword(password,result[0].password)
+                if (pass) {
+                    return response.status(201).json({status: true,message:"login successfully"})
+                } else {
+                    return response.json({status:false, message:"wrong password"})
+                }
+            } else{
+                return response.json({status:false,message:"wrong email or password"})
+            }
+        })
+    } catch (error) {
+      return response.json({status:false, message:'An error occured please contact admin'}) 
     }
 }
