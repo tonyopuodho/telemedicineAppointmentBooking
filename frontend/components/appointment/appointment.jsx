@@ -1,5 +1,5 @@
 
-const Appointment = () => {
+const Appointment = () => { 
     return(
           <div className="p-6">
             <div className="p-4 shadow-sm mt-2 cardAp rounded-sm">
