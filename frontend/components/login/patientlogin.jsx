@@ -4,7 +4,9 @@ import '/src/index.css'
 import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
-const LoginPage = () => {
+
+
+const PatientLogin = () => {
     const [login, setLogin] = useState([])
     const [loading,setLoading] = useState(false)
     const [error,setError] = useState('')
@@ -14,11 +16,11 @@ const LoginPage = () => {
     const handleSubmit = (event) => {
         event.preventDefault()
         setLoading(true)
-        axios.post("http://localhost:3000/auth/login",login)
+        axios.post("http://localhost:3000/auth/loginpatient",login)
         .then(result => {
             if (result.data.status) {
                 setLoading(false)
-                navigate('/dashboard')
+                navigate('/patientDashboard')
                 toast.success(result.data.message)
             } else{
                 setError(result.data.message)
@@ -27,17 +29,6 @@ const LoginPage = () => {
         })
         .catch(error => console.log(error))
     }
-        useEffect(() => {
-            axios.get('http://localhost:3000/auth/username')
-            .then(result => {
-                if(result.data.valid) {
-                    navigate('/dashboard')
-                } else {
-                    navigate('/login')
-                }
-            })
-            .catch(error => console.log(error))
-        },[])
 
     return (
         <div className={"backgroundImage"}>
@@ -64,4 +55,4 @@ const LoginPage = () => {
     )
 }
 
-export default LoginPage
+export default PatientLogin

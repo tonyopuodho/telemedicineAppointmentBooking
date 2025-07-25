@@ -8,6 +8,11 @@ import Calender from "../components/calender/calender"
 import Patients from "../components/patients/patients"
 import Home from "../components/dashboard/home"
 import Register from "../components/register/register"
+import PatientLogin from "../components/login/patientlogin"
+import DashboardPatient from "../components/dashboard/patient/patientDashboard"
+import PatientHome from "../components/dashboard/patient/home"
+import PatientFeedback from "../components/feedback/patientFeedback"
+import PatientAppointment from "../components/appointment/patientAppointment"
 
 
 function App() {
@@ -16,7 +21,14 @@ function App() {
   return (
     <Routes>
       <Route path="register" element={<Register/>}/>
+      <Route path="/patientportal" element={<PatientLogin/>}/>
       <Route path="/login" element={<LoginPage/>} />
+      <Route path="/patientDashboard" element={<DashboardPatient/>}>
+       <Route path="" element={<PatientHome/>}></Route>
+       <Route path="/patientDashboard/feedback" element={<PatientFeedback/>}></Route>
+       <Route path="/patientDashboard/appointment" element={<PatientAppointment/>}></Route>
+       <Route path="/patientDashboard/calendar" element={<Calender/>}></Route>
+      </Route>
       <Route path="/dashboard" element={<Dashboard/>}>
         <Route path="" element={<Home/>}></Route>
         <Route path="/dashboard/manageDoctors" element={<ManageDoctors/>}></Route>
