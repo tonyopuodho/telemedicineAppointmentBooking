@@ -30,7 +30,7 @@ const PatientLogin = () => {
     }
     
     useEffect(() => {
-        axios.get("http://localhost:3000/auth/username")
+        axios.get("http://localhost:3000/auth/patientName")
         .then(result => {
             if (result.data.valid) {
                 navigate('/patientDashboard')

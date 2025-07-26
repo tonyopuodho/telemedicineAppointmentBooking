@@ -1,5 +1,23 @@
+import axios from "axios"
+import { useEffect, useState } from "react"
 
 const PatientProfile = () => {
+    const [id,setUsername] = useState('')
+    const [userProfile,setUserProfile] = useState([])
+    const name = id
+
+    axios.defaults.withCredentials = true
+    useEffect(() => {
+        axios.get("http://localhost:3000/auth/patientName")
+        .then(result => {
+            console.log(result)
+            if (result.data.valid) {
+                setUsername(result.data.username)
+            }
+         })
+        .catch(error => console.log(error))
+    },[])
+
     return(
         <div className="p-4">
             <div className="cardAp p-4 mt-6 rounded-md shadow-md">

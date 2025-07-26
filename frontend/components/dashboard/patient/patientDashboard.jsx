@@ -9,7 +9,7 @@ const DashboardPatient = () => {
     const navigate = useNavigate()
     axios.defaults.withCredentials = true
     useEffect(() => {
-        axios.get("http://localhost:3000/auth/username")
+        axios.get("http://localhost:3000/auth/patientName")
         .then(result => {
             if (result.data.valid) {
                 setUsername(result.data.username)
