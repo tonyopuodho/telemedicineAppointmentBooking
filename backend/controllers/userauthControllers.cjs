@@ -24,6 +24,7 @@ exports.loginpatient = (request,response) => {
             if (result.length > 0) {
                 const pass = comparePassword(password,result[0].password)
                 if (pass) {
+                    request.session.user = result[0].lastName
                     return response.status(201).json({status: true,message:"login successfully"})
                 } else {
                     return response.json({status:false, message:"wrong password"})
@@ -34,6 +35,16 @@ exports.loginpatient = (request,response) => {
         })
     } catch (error) {
       return response.json({status:false, message:'An error occured please contact admin'}) 
+    }
+}
+
+exports.username = (request,response) => {
+    request.session.visited = true
+
+    if (request.session.user) {
+        return response.status(200).json({valid:true,username:request.session.user})
+    } else{
+        return response.json({valid:false})
     }
 }
 
