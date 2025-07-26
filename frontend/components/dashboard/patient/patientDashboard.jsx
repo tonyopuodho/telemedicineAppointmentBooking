@@ -2,6 +2,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { FaAccusoft, FaCalendar, FaCalendarCheck, FaClipboardList, FaComment, FaCommentAlt, FaHome, FaPeopleArrows, FaPowerOff, FaUser, FaUserFriends, FaUserMd } from "react-icons/fa"
 import { Link, Outlet, useNavigate } from "react-router-dom"
+import { toast } from "react-toastify"
 
 const DashboardPatient = () => {
     const [username,setUsername] = useState('')
@@ -18,6 +19,20 @@ const DashboardPatient = () => {
          })
         .catch(error => console.log(error))
     },[])
+    
+      const logout = () => {
+        axios.get('http://localhost:3000/auth/logoutpatient')
+        .then(result => {
+            if(result.data.status) {
+                toast.success(result.data.message)
+                navigate('/patientportal')
+            } else{
+                toast.error("an error occured")
+            }
+        })
+        .catch(error => console.log(error))
+    }
+
     return(
          <div className="flex h-[100vh] w-[100%]">
             <div className="w-[20%] shadow-md h-[100vh] nav top-0 fixed z-10">
@@ -32,7 +47,7 @@ const DashboardPatient = () => {
                 <li><Link to={"/patientDashboard/appointment"} className="flex items-center"><FaClipboardList className="text-3xl"/>  <h2 className="ml-4 mt-2 text-xl font-bold">Appointments</h2></Link></li>
                 <li><Link to={"/patientDashboard/calendar"} className="flex items-center"><FaCalendarCheck className="text-3xl"/>  <h2 className="ml-4 mt-2 text-xl font-bold">Calendar</h2></Link></li>
                 <li><Link to={"/patientDashboard/profile"} className="flex items-center"><FaUserFriends className="text-3xl"/>  <h2 className="ml-4 mt-2 text-xl font-bold">Profile</h2></Link></li>
-                <li><Link  className="flex items-center"><FaPowerOff className="text-3xl"/>  <h2 className="ml-4 mt-2 text-xl font-bold">Logout</h2></Link></li>
+                <li><Link onClick={() => logout()} className="flex items-center"><FaPowerOff className="text-3xl"/>  <h2 className="ml-4 mt-2 text-xl font-bold">Logout</h2></Link></li>
                </ul>
             </div>
             <div className="w-[80%] ml-[20%]">

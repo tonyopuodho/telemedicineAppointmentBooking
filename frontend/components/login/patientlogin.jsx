@@ -10,7 +10,6 @@ const PatientLogin = () => {
     const [login, setLogin] = useState([])
     const [loading,setLoading] = useState(false)
     const [error,setError] = useState('')
-
     const navigate = useNavigate()    
     axios.defaults.withCredentials = true
     const handleSubmit = (event) => {
@@ -29,6 +28,20 @@ const PatientLogin = () => {
         })
         .catch(error => console.log(error))
     }
+    
+    useEffect(() => {
+        axios.get("http://localhost:3000/auth/username")
+        .then(result => {
+            if (result.data.valid) {
+                navigate('/patientDashboard')
+            } else {
+                 navigate('/patientportal')              
+            }
+         })
+        .catch(error => console.log(error))
+    },[])
+
+
 
     return (
         <div className={"backgroundImage"}>
