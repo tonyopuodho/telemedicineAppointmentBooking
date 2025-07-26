@@ -1,4 +1,20 @@
+import axios from "axios"
+import { useState } from "react"
+import { useEffect } from "react"
+
 const FeedBack = () => {
+    const [feedback,setFeedback] = useState([])
+    useEffect(() => {
+        axios.get('http://localhost:3000/action/feedback')
+        .then(result => {
+            if (result.data.status) {
+                setFeedback(result.data.Result)
+            } else {
+                console.log("an error occured")
+            }
+        })
+        .catch(error => console.log(error))
+    },[])
     return (
         <div className="p-4">
             <div className="p-6 w-full cardAp mt-4 rounded-sm shadow-md">
@@ -10,66 +26,17 @@ const FeedBack = () => {
                             <th className="w-[30%]">feedback</th>
                         </thead>
                         <tbody>
-                            <tr className="text-center font-bold border">
-                            <td className="p-2">Tony</td>
-                            <td>Ochieng</td>
-                            <td>tonyochieng@gmail.com</td>
-                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, expedita. Hic, quia! Hic, ea enim  at quas.</td>
-                            </tr>
-                             <tr className="text-center font-bold border">
-                            <td className="p-2">Tony</td>
-                            <td>Ochieng</td>
-                            <td>tonyochieng@gmail.com</td>
-                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, expedita. Hic, quia! Hic, ea enim  at quas.</td>
-                            </tr>
-                             <tr className="text-center font-bold border">
-                            <td className="p-2">Tony</td>
-                            <td>Ochieng</td>
-                            <td>tonyochieng@gmail.com</td>
-                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, expedita. Hic, quia! Hic, ea enim  at quas.</td>
-                            </tr>
-                             <tr className="text-center font-bold border">
-                            <td className="p-2">Tony</td>
-                            <td>Ochieng</td>
-                            <td>tonyochieng@gmail.com</td>
-                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, expedita. Hic, quia! Hic, ea enim  at quas.</td>
-                            </tr>
-                             <tr className="text-center font-bold border">
-                            <td className="p-2">Tony</td>
-                            <td>Ochieng</td>
-                            <td>tonyochieng@gmail.com</td>
-                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, expedita. Hic, quia! Hic, ea enim  at quas.</td>
-                            </tr>
-                             <tr className="text-center font-bold border">
-                            <td className="p-2">Tony</td>
-                            <td>Ochieng</td>
-                            <td>tonyochieng@gmail.com</td>
-                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, expedita. Hic, quia! Hic, ea enim  at quas.</td>
-                            </tr>
-                             <tr className="text-center font-bold border">
-                            <td className="p-2">Tony</td>
-                            <td>Ochieng</td>
-                            <td>tonyochieng@gmail.com</td>
-                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, expedita. Hic, quia! Hic, ea enim  at quas.</td>
-                            </tr>
-                             <tr className="text-center font-bold border">
-                            <td className="p-2">Tony</td>
-                            <td>Ochieng</td>
-                            <td>tonyochieng@gmail.com</td>
-                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, expedita. Hic, quia! Hic, ea enim  at quas.</td>
-                            </tr>
-                             <tr className="text-center font-bold border">
-                            <td className="p-2">Tony</td>
-                            <td>Ochieng</td>
-                            <td>tonyochieng@gmail.com</td>
-                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, expedita. Hic, quia! Hic, ea enim  at quas.</td>
-                            </tr>
-                             <tr className="text-center font-bold border">
-                            <td className="p-2">Tony</td>
-                            <td>Ochieng</td>
-                            <td>tonyochieng@gmail.com</td>
-                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, expedita. Hic, quia! Hic, ea enim  at quas.</td>
-                            </tr>
+                            {
+                                feedback.map((items,index) => (
+                                     <tr className="text-center font-bold border" key={index}>
+                                        <td className="p-2">{items.firstName}</td>
+                                        <td>{items.lastName}</td>
+                                        <td>{items.email}</td>
+                                        <td>{items.feedback}</td>
+                                    </tr>
+                                ))
+                            }
+                           
                         </tbody>
                     </table>                  
             </div>
