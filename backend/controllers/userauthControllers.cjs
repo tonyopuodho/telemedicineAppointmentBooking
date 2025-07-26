@@ -61,3 +61,12 @@ exports.getAllusers = (request,response) => {
         return response.json({status: false, message:"Error occured"})
     }
 } 
+
+exports.logout = (request,response) => {
+    if (request.session.user !== undefined) {
+        request.session = null
+        response.clearCookie('connect.sid')
+    }
+    
+    response.json({status:true,message: "logout successfully"})
+}
