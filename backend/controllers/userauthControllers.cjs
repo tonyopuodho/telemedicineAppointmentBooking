@@ -36,3 +36,17 @@ exports.loginpatient = (request,response) => {
       return response.json({status:false, message:'An error occured please contact admin'}) 
     }
 }
+
+exports.getAllusers = (request,response) => {
+    try {
+        const sqlQuerry = "SELECT * FROM patient"
+        conn.query(sqlQuerry,(error,result) => {
+            if (error) return response.json({status: false, message:"Querry error"})
+            
+            return response.status(200).json({status:true,Result:result})
+        })
+    } catch (error) {
+        console.log(error)
+        return response.json({status: false, message:"Error occured"})
+    }
+} 

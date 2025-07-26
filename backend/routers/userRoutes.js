@@ -4,5 +4,6 @@ import userauthControllers from '../controllers/userauthControllers.cjs'
 const router = Router()
 router.post('/register',userauthControllers.registerUser)
 router.post("/loginpatient",userauthControllers.loginpatient)
+router.get("/patient",userauthControllers.getAllusers)
 
 export default router

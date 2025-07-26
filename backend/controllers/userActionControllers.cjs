@@ -15,3 +15,18 @@ exports.createFeedback = (request,response) => {
         return response.json({status:false, message:error})
     }
 }
+
+exports.getAllfeedback = (request,response) => {
+    try {
+        const sqlQuerry = "SELECT * FROM feedback"
+        conn.query(sqlQuerry,(error,result) => {
+            if (error) return response.json({status:false,message:"Querry error"})
+            
+            return response.status(200).json({status:true, Result:result})
+        })
+    } catch (error) {
+        console.log(error)
+        return response.json({status: false, message:"An error occured"})
+        
+    }
+}
