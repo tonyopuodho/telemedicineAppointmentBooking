@@ -1,6 +1,20 @@
+import axios from "axios"
+import { useEffect, useState } from "react"
 
 
 const Patients = () => {
+    const [patient,setPatient] = useState([])
+    useEffect(() => {
+        axios.get("http://localhost:3000/auth/patient")
+        .then(result => {
+            if(result.data.status) {
+                setPatient(result.data.Result)
+            } else{
+                console.log("Error occured")
+            }
+        })
+        .then(error => console.log(error))
+    },[])
     return(
            <div className="p-6">
             <div className="p-4 shadow-sm mt-2 cardAp rounded-sm">
@@ -14,22 +28,18 @@ const Patients = () => {
                             <th>address</th>
                         </thead>
                         <tbody>
-                            <tr className="text-center font-bold ">
-                            <td className="p-2">Tony</td>
-                            <td>Ochieng</td>
-                            <td>ochieng@gmail.com</td>
-                            <td>0794498656</td>
-                            <td>Male</td>
-                            <td>nairobi</td>
-                            </tr>
-                             <tr className="text-center font-bold ">
-                            <td className="p-2">Tony</td>
-                            <td>Ochieng</td>
-                            <td>ochieng@gmail.com</td>
-                            <td>0794498656</td>
-                            <td>Male</td>
-                            <td>nairobi</td>
-                            </tr>
+                        {
+                            patient.map((item,index) => (
+                                  <tr className="text-center font-bold " key={index}>
+                                    <td className="p-2">{item.firstName}</td>
+                                    <td>{item.lastName}</td>
+                                    <td>{item.email}</td>
+                                    <td>{item.phone}</td>
+                                    <td>{item.gendar}</td>
+                                    <td>{item.address}</td>
+                             </tr>
+                            ))
+                        }                         
                                          
                         </tbody>
                     </table>                
