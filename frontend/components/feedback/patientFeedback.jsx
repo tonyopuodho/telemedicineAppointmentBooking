@@ -5,7 +5,6 @@ import { toast } from 'react-toastify'
 const PatientFeedback = () => {
     const [feedback,setFeedback] = useState([])
     const [message,setMessage] = useState('')
-    console.log(feedback)
     
     const handleSubmit = (event) => {
         event.preventDefault()

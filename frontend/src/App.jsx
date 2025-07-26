@@ -13,6 +13,7 @@ import DashboardPatient from "../components/dashboard/patient/patientDashboard"
 import PatientHome from "../components/dashboard/patient/home"
 import PatientFeedback from "../components/feedback/patientFeedback"
 import PatientAppointment from "../components/appointment/patientAppointment"
+import PatientProfile from "../components/profile/patientProfile"
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
        <Route path="/patientDashboard/feedback" element={<PatientFeedback/>}></Route>
        <Route path="/patientDashboard/appointment" element={<PatientAppointment/>}></Route>
        <Route path="/patientDashboard/calendar" element={<Calender/>}></Route>
+       <Route path="/patientDashboard/profile" element={<PatientProfile/>}></Route>
       </Route>
       <Route path="/dashboard" element={<Dashboard/>}>
         <Route path="" element={<Home/>}></Route>
