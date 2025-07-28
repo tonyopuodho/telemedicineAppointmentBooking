@@ -63,6 +63,20 @@ exports.patientDetail = (request,response) => {
     }
 }
 
+exports.update = (request,response) => {
+    const {firstName,lastName,email,phone,address,dateOfbirth,id} = request.body
+
+   try {
+        const sqlQuerry = "UPDATE patient SET firstName = ?, lastName = ?, email = ?, phone = ?, address = ?, dateOfbirth = ? WHERE patientId = ?"
+        conn.query(sqlQuerry,[firstName,lastName,email,phone,address,dateOfbirth,id],(error,result) => {
+            if (error) return response.json({status:false, message:"Querry error"})
+            return response.status(200).json({status:true, message:"updated successfully"})
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 exports.getAllusers = (request,response) => {
     try {
         const sqlQuerry = "SELECT * FROM patient"
@@ -75,9 +89,7 @@ exports.getAllusers = (request,response) => {
         console.log(error)
         return response.json({status: false, message:"Error occured"})
     }
-} 
-
-
+}
 
 exports.logout = (request,response) => {
     if (request.session.user !== undefined) {
