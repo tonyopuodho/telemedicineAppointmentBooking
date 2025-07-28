@@ -49,6 +49,20 @@ exports.patientName = (request,response) => {
     }
 }
 
+exports.patientDetail = (request,response) => {
+    const { id } = request.params
+    try {
+        const sqlQuerry = "SELECT * FROM patient WHERE patientId = ?"
+        conn.query(sqlQuerry,[id], (error,result) => {
+            if (error) return response.json({status: false, message:"Querry error"})
+            
+            return response.status(200).json({status:true, Result:result})
+        })
+    } catch (error) {
+        
+    }
+}
+
 exports.getAllusers = (request,response) => {
     try {
         const sqlQuerry = "SELECT * FROM patient"
