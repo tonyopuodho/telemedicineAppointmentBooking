@@ -14,6 +14,10 @@ import PatientHome from "../components/dashboard/patient/home"
 import PatientFeedback from "../components/feedback/patientFeedback"
 import PatientAppointment from "../components/appointment/patientAppointment"
 import PatientProfile from "../components/profile/patientProfile"
+import DoctorDashboard from "../components/dashboard/doctor/dashboard"
+import DoctorHome from "../components/dashboard/doctor/home"
+import DoctorAppointment from "../components/appointment/doctorAppointment"
+import DoctorProfile from "../components/profile/doctorProfile"
 
 
 function App() {
@@ -24,6 +28,12 @@ function App() {
       <Route path="register" element={<Register/>}/>
       <Route path="/patientportal" element={<PatientLogin/>}/>
       <Route path="/login" element={<LoginPage/>} />
+      <Route path="/doctorDashboard" element={<DoctorDashboard/>}>
+        <Route path="" element={<DoctorHome/>}></Route>
+        <Route path="/doctorDashboard/appointment" element={<DoctorAppointment/>}></Route>
+        <Route path="/doctorDashboard/calendar" element={<Calender/>}></Route>
+        <Route path="/doctorDashboard/profile" element={<DoctorProfile/>}></Route>
+      </Route>
       <Route path="/patientDashboard" element={<DashboardPatient/>}>
        <Route path="" element={<PatientHome/>}></Route>
        <Route path="/patientDashboard/feedback" element={<PatientFeedback/>}></Route>
