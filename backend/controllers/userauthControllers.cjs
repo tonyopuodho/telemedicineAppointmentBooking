@@ -11,7 +11,7 @@ exports.registerUser = (request,response) => {
             return response.status(201).json({status:true,message:"Account created successfully"})
          })
     } catch (error) {
-        
+       console.log(error)       
     }
 }
 

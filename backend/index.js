@@ -3,6 +3,7 @@ import cors from 'cors'
 import authRouter from './routers/authRoutes.js'
 import userRoutes from './routers/userRoutes.js'
 import userActionRoutes from './routers/userActionRoutes.js'
+import doctorRoutes from './routers/doctorRoutes.js'
 import dotenv from 'dotenv'
 import cookieParser from 'cookie-parser'
 import session from 'express-session'
@@ -29,6 +30,7 @@ app.use(session({
 app.use("/auth",authRouter)
 app.use("/auth",userRoutes)
 app.use("/action",userActionRoutes)
+app.use("/api",doctorRoutes)
 
 app.listen(process.env.PORT,() => {
     console.log("server is running")
