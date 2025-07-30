@@ -1,8 +1,11 @@
 import axios from "axios"
 import { useState } from "react"
 import { FaSpinner } from "react-icons/fa"
+import { useNavigate } from "react-router-dom"
+import { toast } from "react-toastify"
 
 const AddDoctor = () => {
+    const navigate = useNavigate()
     const [doctor,setDoctor] = useState({
         firstName:'',
         lastName:'',
@@ -26,9 +29,19 @@ const AddDoctor = () => {
         formData.append('image',doctor.image)
         formData.append('password',doctor.password)
 
-        console.log(formData)
+        console.log(formData) 
+        setLoading(true)
         axios.post('http://localhost:3000/api/addDoctor',formData)
-        .then(result => console.log(result))
+        .then(result => {
+            if (result.data.status) {
+                setLoading(false)
+                toast.success(result.data.message)
+                navigate('/dashboard/manageDoctors')
+            } else{
+                setLoading(false)
+                toast.error(result.data.message)
+            }
+        })
         .catch(error => console.log(error))
     }
 
