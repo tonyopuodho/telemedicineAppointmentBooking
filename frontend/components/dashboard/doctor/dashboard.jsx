@@ -21,7 +21,7 @@ const DoctorDashboard = () => {
             <div className="w-[80%] ml-[20%]">
                 <nav className="w-full shadow-md top-0 sticky h-[10vh] bg-white pt-4">
                     <div className="flex  items-center font-bold text-2xl ml-[80%]">
-                        <h3 className="mr-4 text-3xl">Hi, {} </h3> <span><FaUser/></span>
+                        <h3 className="mr-4 text-3xl">Hi,Dr Ochieng{} </h3> <span><FaUser/></span>
                     </div>
                 </nav>
              <Outlet/>

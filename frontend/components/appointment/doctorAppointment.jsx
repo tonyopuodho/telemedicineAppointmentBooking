@@ -1,8 +1,190 @@
 
 const DoctorAppointment = () => {
     return (
-        <div>
-            <p>Appointment</p>
+        <div className="p-4 flex flex-col">
+            <h2 className="text-center font-bold text-xl">Current Appointments</h2>
+            <div className="p-4 cardAp shadow-md rounded-md mt-2 overflow-auto h-[40vh] ">
+                <table className="w-full">
+                    <thead>
+                        <th className="w-[20%]">Doctor's Name</th>
+                        <th className="w-[20%]">Patient's Name</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </thead>
+                    <tbody className="text-center font-bold">
+                        <tr>
+                            <td>Tony</td>
+                            <td>Roseline</td>
+                            <td>2/3/2023</td>
+                            <td>8:00</td>
+                            <td>Pending</td>
+                        </tr>
+                          <tr>
+                            <td>Tony</td>
+                            <td>Roseline</td>
+                            <td>2/3/2023</td>
+                            <td>8:00</td>
+                            <td>Pending</td>
+                        </tr>
+                          <tr>
+                            <td>Tony</td>
+                            <td>Roseline</td>
+                            <td>2/3/2023</td>
+                            <td>8:00</td>
+                            <td>Pending</td>
+                        </tr>
+                          <tr>
+                            <td>Tony</td>
+                            <td>Roseline</td>
+                            <td>2/3/2023</td>
+                            <td>8:00</td>
+                            <td>Pending</td>
+                        </tr>
+                          <tr>
+                            <td>Tony</td>
+                            <td>Roseline</td>
+                            <td>2/3/2023</td>
+                            <td>8:00</td>
+                            <td>Pending</td>
+                        </tr>
+                          <tr>
+                            <td>Tony</td>
+                            <td>Roseline</td>
+                            <td>2/3/2023</td>
+                            <td>8:00</td>
+                            <td>Pending</td>
+                        </tr>
+                          <tr>
+                            <td>Tony</td>
+                            <td>Roseline</td>
+                            <td>2/3/2023</td>
+                            <td>8:00</td>
+                            <td>Pending</td>
+                        </tr>
+                             <tr>
+                            <td>Tony</td>
+                            <td>Roseline</td>
+                            <td>2/3/2023</td>
+                            <td>8:00</td>
+                            <td>Pending</td>
+                        </tr>
+                          <tr>
+                            <td>Tony</td>
+                            <td>Roseline</td>
+                            <td>2/3/2023</td>
+                            <td>8:00</td>
+                            <td>Pending</td>
+                        </tr>
+                          <tr>
+                            <td>Tony</td>
+                            <td>Roseline</td>
+                            <td>2/3/2023</td>
+                            <td>8:00</td>
+                            <td>Pending</td>
+                        </tr>
+                          <tr>
+                            <td>Tony</td>
+                            <td>Roseline</td>
+                            <td>2/3/2023</td>
+                            <td>8:00</td>
+                            <td>Pending</td>
+                        </tr>
+                          <tr>
+                            <td>Tony</td>
+                            <td>Roseline</td>
+                            <td>2/3/2023</td>
+                            <td>8:00</td>
+                            <td>Pending</td>
+                        </tr>
+                          <tr>
+                            <td>Tony</td>
+                            <td>Roseline</td>
+                            <td>2/3/2023</td>
+                            <td>8:00</td>
+                            <td>Pending</td>
+                        </tr>
+                          <tr>
+                            <td>Tony</td>
+                            <td>Roseline</td>
+                            <td>2/3/2023</td>
+                            <td>8:00</td>
+                            <td>Pending</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h2 className="text-center font-bold text-xl mt-6">Past Appointments</h2>
+            <div className="p-4 cardAp shadow-md rounded-md mt-4 overflow-auto h-[30vh]">
+                <table className="w-full">
+                    <thead>
+                        <th className="w-[20%]">Doctor's Name</th>
+                        <th className="w-[20%]">Patient's Name</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                    </thead>
+                    <tbody className="text-center font-bold">
+                        <tr>
+                            <td>Tony</td>
+                            <td>Roseline</td>
+                            <td>2/3/2023</td>
+                            <td>8:00</td>
+                            <td>completed</td>
+                        </tr>
+                            <tr>
+                            <td>Tony</td>
+                            <td>Roseline</td>
+                            <td>2/3/2023</td>
+                            <td>8:00</td>
+                            <td>completed</td>
+                        </tr>
+                            <tr>
+                            <td>Tony</td>
+                            <td>Roseline</td>
+                            <td>2/3/2023</td>
+                            <td>8:00</td>
+                            <td>completed</td>
+                        </tr>
+                               <tr>
+                            <td>Tony</td>
+                            <td>Roseline</td>
+                            <td>2/3/2023</td>
+                            <td>8:00</td>
+                            <td>completed</td>
+                        </tr>
+                               <tr>
+                            <td>Tony</td>
+                            <td>Roseline</td>
+                            <td>2/3/2023</td>
+                            <td>8:00</td>
+                            <td>completed</td>
+                        </tr>
+                               <tr>
+                            <td>Tony</td>
+                            <td>Roseline</td>
+                            <td>2/3/2023</td>
+                            <td>8:00</td>
+                            <td>completed</td>
+                        </tr>
+                               <tr>
+                            <td>Tony</td>
+                            <td>Roseline</td>
+                            <td>2/3/2023</td>
+                            <td>8:00</td>
+                            <td>completed</td>
+                        </tr>
+                               <tr>
+                            <td>Tony</td>
+                            <td>Roseline</td>
+                            <td>2/3/2023</td>
+                            <td>8:00</td>
+                            <td>completed</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     )
 }
