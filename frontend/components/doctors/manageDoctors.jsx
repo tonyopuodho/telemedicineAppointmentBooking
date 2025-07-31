@@ -4,7 +4,6 @@ import { Link } from "react-router-dom"
 
 const ManageDoctors = () => {
     const [doctor, setDoctor] = useState([])
-
     useEffect(() => {
         axios.get('http://localhost:3000/api/doctors')
         .then(result => {
@@ -42,7 +41,7 @@ const ManageDoctors = () => {
                                     <td>{items.specialization}</td>
                                     <td>{items.schedule}</td>
                                     <td>
-                                        <button className="p-2 card rounded-sm cursor-pointer outline-none">Edit</button>
+                                        <Link to={`/dashboard/manageDoctors/${items.doctorId}`} className="p-3 card rounded-sm cursor-pointer outline-none">Edit</Link>
                                         <button className="p-2 card ml-4 rounded-sm cursor-pointer outline-none">Delete</button>
                                     </td>
                                 </tr>  

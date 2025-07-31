@@ -19,6 +19,7 @@ import DoctorHome from "../components/dashboard/doctor/home"
 import DoctorAppointment from "../components/appointment/doctorAppointment"
 import DoctorProfile from "../components/profile/doctorProfile"
 import AddDoctor from "../components/add/addDoctor"
+import EditDoctor from "../components/doctors/editDoctor"
 
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
         <Route path="" element={<Home/>}></Route>
         <Route path="/dashboard/manageDoctors" element={<ManageDoctors/>}></Route>
         <Route path="/dashboard/manageDoctors/addDoctor" element={<AddDoctor/>}></Route>
+        <Route path="/dashboard/manageDoctors/:id" element={<EditDoctor/>}></Route>
         <Route path="/dashboard/feedback" element={<FeedBack/>}></Route>
         <Route path="/dashboard/appointment" element={<Appointment/>}></Route>
         <Route path="/dashboard/calender" element={<Calender/>}></Route>
