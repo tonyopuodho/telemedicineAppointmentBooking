@@ -6,4 +6,6 @@ const router = Router()
 router.post("/addDoctor", upload.single('image'),doctorActionControllers.registerDoctor)
 router.get("/doctors",doctorActionControllers.getDoctors)
 router.get("/countDoctor",doctorActionControllers.countDoctor)
+router.get("/doctor/:id",doctorActionControllers.getDoctor)
+router.put("/doctor/:id",doctorActionControllers.editDoctor)
 export default router

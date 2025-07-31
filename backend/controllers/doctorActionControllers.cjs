@@ -39,6 +39,33 @@ exports.getDoctors = (request,response) => {
     }
 }
 
+exports.getDoctor = (request,response) => {
+    const { id } = request.params
+    try {
+        const sqlQuerry = "SELECT * FROM doctor WHERE doctorId = ?"
+        conn.query(sqlQuerry,[id], (error, result) => {
+            if (error) return response.json({status: false, message:"Query error"})
+            return response.status(200).json({status: true, Result:result})
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.editDoctor = (request,response) => {
+    const { id } = request.params
+    const { schedule } = request.body
+    try {
+        const sqlQuerry = "UPDATE doctor SET schedule = ? WHERE doctorId = ?"
+        conn.query(sqlQuerry,[schedule,id], (error, result) => {
+         if (error) return response.json({status:false, message:"Query error"})
+         return response.status(200).json({status: true, message:"schedule updated successfully"})
+        })
+    } catch (error) {
+        
+    }
+}
+
 exports.countDoctor = (request,response) => {
     const sqlQuery = "SElECT COUNT(doctorId) AS total from doctor"
     conn.query(sqlQuery, (error,result) => {
