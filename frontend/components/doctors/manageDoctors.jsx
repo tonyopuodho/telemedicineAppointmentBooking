@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import { data, Link } from "react-router-dom"
+import { toast } from "react-toastify"
 
 const ManageDoctors = () => {
     const [doctor, setDoctor] = useState([])
@@ -13,7 +14,21 @@ const ManageDoctors = () => {
         })
         .catch(error => console.log(error))
     },[])
-    console.log(doctor)
+    
+    const deleteDoctor = (id) => {
+        axios.delete(`http://localhost:3000/api/doctor/${id}`)
+        .then(result => {
+            console.log(result)
+            if (result.data.status) {
+                toast.success(result.data.message)
+                window.location.reload()
+            } else {
+                toast.error("An error occured")
+            }
+        })
+        .catch(error => console.log(error))
+    }
+
     return(
         <div className="p-6">
             <Link to={"/dashboard/manageDoctors/addDoctor"} className="py-3 px-5 rounded-sm card mt-3 pb-4 cursor-pointer font-bold outline-none shadow-md">Add doctor</Link>
@@ -42,7 +57,7 @@ const ManageDoctors = () => {
                                     <td>{items.schedule}</td>
                                     <td>
                                         <Link to={`/dashboard/manageDoctors/${items.doctorId}`} className="p-3 card rounded-sm cursor-pointer outline-none">Edit</Link>
-                                        <button className="p-2 card ml-4 rounded-sm cursor-pointer outline-none">Delete</button>
+                                        <button className="p-2 card ml-4 rounded-sm cursor-pointer outline-none" onClick={() => deleteDoctor(items.doctorId)} >Delete</button>
                                     </td>
                                 </tr>  
                                 ))
