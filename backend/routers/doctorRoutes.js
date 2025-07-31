@@ -8,4 +8,5 @@ router.get("/doctors",doctorActionControllers.getDoctors)
 router.get("/countDoctor",doctorActionControllers.countDoctor)
 router.get("/doctor/:id",doctorActionControllers.getDoctor)
 router.put("/doctor/:id",doctorActionControllers.editDoctor)
+router.delete("/doctor/:id",doctorActionControllers.deleteDoctor)
 export default router

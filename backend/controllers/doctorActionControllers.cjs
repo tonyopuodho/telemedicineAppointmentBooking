@@ -1,3 +1,4 @@
+const { error } = require("console")
 const { default: conn } = require("../configs/db")
 const { hashPassword } = require("../configs/hashpassword")
 
@@ -62,7 +63,20 @@ exports.editDoctor = (request,response) => {
          return response.status(200).json({status: true, message:"schedule updated successfully"})
         })
     } catch (error) {
-        
+       console.log(error) 
+    }
+}
+
+exports.deleteDoctor = (request,response) => {
+    const { id } = request.params
+    try {
+        const sqlQuerry = "DELETE FROM doctor WHERE doctorId = ?"
+        conn.query(sqlQuerry,[id], (error,result) => {
+            if (error) return response.json({status: false, message:"Query error"})
+            return response.status(200).json({status:true,message:"Doctor deleted successfully"})
+        })
+    } catch (error) {
+        console.log(error)        
     }
 }
 
