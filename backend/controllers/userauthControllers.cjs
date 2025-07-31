@@ -99,3 +99,11 @@ exports.logout = (request,response) => {
     
     response.json({status:true,message: "logout successfully"})
 }
+
+exports.countPatient = (request,response) => {
+    const sqlQuery = "SElECT COUNT(patientId) AS total from patient"
+    conn.query(sqlQuery, (error,result) => {
+        if (error) return response.json({status: false, message:"Query error"})        
+        return response.status(200).json({status:true, Result:result})
+    })
+}

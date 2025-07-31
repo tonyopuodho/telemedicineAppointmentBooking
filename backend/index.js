@@ -12,6 +12,7 @@ const app = express()
 
 dotenv.config()
 app.use(express.json())
+app.use(express.static('public'))
 app.use(cors({
     origin:'http://localhost:5173',
     methods:["POST","GET","DELETE","PUT"],

@@ -9,5 +9,6 @@ router.get("/patientName",userauthControllers.patientName)
 router.get("/logoutpatient",userauthControllers.logout)
 router.get("/patientDetail/:id",userauthControllers.patientDetail)
 router.put("/patientDetail",userauthControllers.update)
+router.get("/countPatient",userauthControllers.countPatient)
 
 export default router

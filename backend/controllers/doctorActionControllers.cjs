@@ -25,3 +25,24 @@ exports.registerDoctor = (request,response) => {
         console.log(error)
     }
 }
+
+exports.getDoctors = (request,response) => {
+    try {
+        const sqlQuery = "SELECT * FROM doctor"
+        conn.query(sqlQuery, (error,result) => {
+            if (error) return response.json({status:false, message:"Querry error"})
+            
+            return response.status(200).json({status:true, Result:result})
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.countDoctor = (request,response) => {
+    const sqlQuery = "SElECT COUNT(doctorId) AS total from doctor"
+    conn.query(sqlQuery, (error,result) => {
+        if (error) return response.json({status: false, message:"Query error"})        
+        return response.status(200).json({status:true, Result:result})
+    })
+}

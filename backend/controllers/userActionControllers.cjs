@@ -30,3 +30,12 @@ exports.getAllfeedback = (request,response) => {
         
     }
 }
+
+
+exports.countFeedback = (request,response) => {
+    const sqlQuery = "SElECT COUNT(id) AS total from feedback"
+    conn.query(sqlQuery, (error,result) => {
+        if (error) return response.json({status: false, message:"Query error"})        
+        return response.status(200).json({status:true, Result:result})
+    })
+}
