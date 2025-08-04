@@ -1,6 +1,5 @@
-const { error } = require("console")
 const { default: conn } = require("../configs/db")
-const { hashPassword } = require("../configs/hashpassword")
+const { hashPassword, comparePassword } = require("../configs/hashpassword")
 
 exports.registerDoctor = (request,response) => {
     const data = {
@@ -22,6 +21,31 @@ exports.registerDoctor = (request,response) => {
             return response.status(201).json({status: true, message:"Doctor added successfully"})
         })
         
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.loginDoctor = (request,response) => {
+    const { username, password } = request.body
+    try {
+        const sqlQuerry = "SELECT * FROM doctor WHERE lastName = ?"
+        conn.query(sqlQuerry,[username], (error,result) => {
+            if (error) return response.json({status: false, message:"Query error"})
+            if (result.length > 0) {
+                const pass = comparePassword(password,result[0].password)
+
+                if (pass) {
+                    request.session.user = result[0].lastName
+                    request.session.doctorId = result[0].doctorId
+                    return response.status(201).json({status:true, message:'Login successfully'})
+                } else {
+                    return response.json({status: false, message:"wrong password"})
+                }
+            } else {
+                return response.json({status: false, message: "wrong email or password"})
+            }
+        })
     } catch (error) {
         console.log(error)
     }
@@ -80,10 +104,43 @@ exports.deleteDoctor = (request,response) => {
     }
 }
 
+
+exports.username = (request,response) => {
+    request.session.visited = true
+
+    if (request.session.user && request.session.doctorId) {
+        return response.status(200).json({valid: true, username: request.session.user, doctorId: request.session.doctorId})
+    } else {
+        return response.json({valid: false})
+    }
+}
+
 exports.countDoctor = (request,response) => {
     const sqlQuery = "SElECT COUNT(doctorId) AS total from doctor"
     conn.query(sqlQuery, (error,result) => {
         if (error) return response.json({status: false, message:"Query error"})        
         return response.status(200).json({status:true, Result:result})
     })
+}
+
+exports.updateDoctor = (request,response) => {
+    const {firstName,lastName,email,phone,specialty,schedule,id} = request.body
+    try {
+        const sqlQuerry = "UPDATE doctor SET firstName = ?, lastName = ?, email = ?, phone = ?, specialization = ?, schedule = ? WHERE doctorId =?"
+        conn.query(sqlQuerry,[firstName,lastName,email,phone,specialty,schedule,id], (error, result) => {
+            if (error) return response.json({status: false, message:" Querry error"})
+            return response.status(200).json({status: true, message:"updated successfully"})
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.logoutDoctor = (request,response) => {
+    if (request.session.user !== undefined) {
+        request.session = null
+        response.clearCookie('connect.sid')
+    }
+    
+    response.json({status:true,message: "logout successfully"})
 }
