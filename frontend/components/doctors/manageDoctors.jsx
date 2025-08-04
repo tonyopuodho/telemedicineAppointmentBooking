@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { data, Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { toast } from "react-toastify"
 
 const ManageDoctors = () => {

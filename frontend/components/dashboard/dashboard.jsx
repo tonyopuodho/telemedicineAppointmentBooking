@@ -5,7 +5,6 @@ import { Link, Outlet, useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
 const Dashboard = () => {
     const [username, setUsername] = useState('')
-    const [drop, setDrop] = useState(true)
     const navigate = useNavigate()
     axios.defaults.withCredentials = true
     useEffect(() => {

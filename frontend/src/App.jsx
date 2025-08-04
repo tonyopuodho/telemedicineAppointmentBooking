@@ -20,6 +20,7 @@ import DoctorAppointment from "../components/appointment/doctorAppointment"
 import DoctorProfile from "../components/profile/doctorProfile"
 import AddDoctor from "../components/add/addDoctor"
 import EditDoctor from "../components/doctors/editDoctor"
+import DoctorLogin from "../components/login/doctorLogin"
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
       <Route path="register" element={<Register/>}/>
       <Route path="/patientportal" element={<PatientLogin/>}/>
       <Route path="/login" element={<LoginPage/>} />
+      <Route path="doctorLogin" element={<DoctorLogin/>}/>
       <Route path="/doctorDashboard" element={<DoctorDashboard/>}>
         <Route path="" element={<DoctorHome/>}></Route>
         <Route path="/doctorDashboard/appointment" element={<DoctorAppointment/>}></Route>
