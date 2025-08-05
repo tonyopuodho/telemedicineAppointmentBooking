@@ -21,6 +21,7 @@ import DoctorProfile from "../components/profile/doctorProfile"
 import AddDoctor from "../components/add/addDoctor"
 import EditDoctor from "../components/doctors/editDoctor"
 import DoctorLogin from "../components/login/doctorLogin"
+import BookAppointment from "../components/appointment/bookAppointment"
 
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
        <Route path="" element={<PatientHome/>}></Route>
        <Route path="/patientDashboard/feedback" element={<PatientFeedback/>}></Route>
        <Route path="/patientDashboard/appointment" element={<PatientAppointment/>}></Route>
+       <Route path="/patientDashboard/appointment/:id" element={<BookAppointment/>}></Route>
        <Route path="/patientDashboard/calendar" element={<Calender/>}></Route>
        <Route path="/patientDashboard/profile" element={<PatientProfile/>}></Route>
       </Route>
