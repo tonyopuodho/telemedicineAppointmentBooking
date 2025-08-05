@@ -3,8 +3,8 @@ const { hashPassword, comparePassword } = require("../configs/hashpassword")
 
 exports.registerDoctor = (request,response) => {
     const data = {
-        firstName:request.body.firstName,
-        lastName: request.body.lastName,
+        dfirstName:request.body.dfirstName,
+        dlastName: request.body.dlastName,
         email: request.body.email,
         phone: request.body.phone,
         specialization: request.body.specialization,
@@ -15,7 +15,7 @@ exports.registerDoctor = (request,response) => {
 
     const password = hashPassword(data.password)
     try {
-        const sqlQuery = "INSERT INTO doctor(firstName,lastName,email,phone,specialization,schedule,password,image) VALUE(?,?,?,?,?,?,?,?)"
+        const sqlQuery = "INSERT INTO doctor(dfirstName,dlastName,email,phone,specialization,schedule,password,image) VALUE(?,?,?,?,?,?,?,?)"
         conn.query(sqlQuery,[data.firstName,data.lastName,data.email,data.phone,data.specialization,data.schedule,password,data.image], (error,result) => {
             if (error) return response.json({status: false, message:"Query error"})            
             return response.status(201).json({status: true, message:"Doctor added successfully"})
@@ -29,14 +29,14 @@ exports.registerDoctor = (request,response) => {
 exports.loginDoctor = (request,response) => {
     const { username, password } = request.body
     try {
-        const sqlQuerry = "SELECT * FROM doctor WHERE lastName = ?"
+        const sqlQuerry = "SELECT * FROM doctor WHERE dlastName = ?"
         conn.query(sqlQuerry,[username], (error,result) => {
             if (error) return response.json({status: false, message:"Query error"})
             if (result.length > 0) {
                 const pass = comparePassword(password,result[0].password)
 
                 if (pass) {
-                    request.session.user = result[0].lastName
+                    request.session.user = result[0].dlastName
                     request.session.doctorId = result[0].doctorId
                     return response.status(201).json({status:true, message:'Login successfully'})
                 } else {
@@ -124,10 +124,10 @@ exports.countDoctor = (request,response) => {
 }
 
 exports.updateDoctor = (request,response) => {
-    const {firstName,lastName,email,phone,specialty,schedule,id} = request.body
+    const {dfirstName,dlastName,email,phone,specialty,schedule,id} = request.body
     try {
-        const sqlQuerry = "UPDATE doctor SET firstName = ?, lastName = ?, email = ?, phone = ?, specialization = ?, schedule = ? WHERE doctorId =?"
-        conn.query(sqlQuerry,[firstName,lastName,email,phone,specialty,schedule,id], (error, result) => {
+        const sqlQuerry = "UPDATE doctor SET dfirstName = ?, dlastName = ?, email = ?, phone = ?, specialization = ?, schedule = ? WHERE doctorId =?"
+        conn.query(sqlQuerry,[dfirstName,dlastName,email,phone,specialty,schedule,id], (error, result) => {
             if (error) return response.json({status: false, message:" Querry error"})
             return response.status(200).json({status: true, message:"updated successfully"})
         })
