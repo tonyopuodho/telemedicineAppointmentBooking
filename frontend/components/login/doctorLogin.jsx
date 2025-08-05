@@ -14,13 +14,16 @@ const DoctorLogin = () => {
     axios.defaults.withCredentials = true
     const handleSubmit = (event) => {
         event.preventDefault()
+        setLoading(true)
         axios.post('http://localhost:3000/api/loginDoctor',login)
         .then(result => {
             if (result.data.status) {
                 toast.success(result.data.message)
                 navigate('/doctorDashboard')
+                setLoading(false)
             } else {
                 setError(result.data.message)
+                setLoading(false)
             }
         })
         .catch(error => console.log(error))

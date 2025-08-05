@@ -15,8 +15,8 @@ const DoctorProfile = () => {
                     if (result.data.status) {
                            setProfile({
                             id:doctorId,
-                            firstName:result.data.Result[0].firstName,
-                            lastName:result.data.Result[0].lastName,
+                            dfirstName:result.data.Result[0].dfirstName,
+                            dlastName:result.data.Result[0].dlastName,
                             phone:result.data.Result[0].phone,
                             email:result.data.Result[0].email,
                             schedule:result.data.Result[0].schedule,
@@ -52,7 +52,7 @@ const DoctorProfile = () => {
                 <div className="flex gap-8">
                         <div>
                         <label className="font-bold">First name</label>
-                        <input type="text" value={profile.firstName} onChange={(event) => setProfile({...profile, firstName:event.target.value})} className="w-full p-2 outline-none rounded-md mb-2 bg-white"/>
+                        <input type="text" value={profile.dfirstName} onChange={(event) => setProfile({...profile, dfirstName:event.target.value})} className="w-full p-2 outline-none rounded-md mb-2 bg-white"/>
                         <label className="font-bold">Email</label>
                         <input type="text" value={profile.email} onChange={(event) => setProfile({...profile, email:event.target.value})} className="w-full p-2 outline-none rounded-md mb-2 bg-white"/> 
                          <label className="font-bold">Schedule</label>
@@ -60,7 +60,7 @@ const DoctorProfile = () => {
                     </div>
                     <div>
                         <label className="font-bold">Last name</label>
-                        <input type="text" value={profile.lastName} onChange={(event) => setProfile({...profile, lastName:event.target.value})} className="w-full p-2 outline-none rounded-md mb-2 bg-white"/>
+                        <input type="text" value={profile.dlastName} onChange={(event) => setProfile({...profile, dlastName:event.target.value})} className="w-full p-2 outline-none rounded-md mb-2 bg-white"/>
                         <label className="font-bold">phone</label>
                         <input type="text" value={profile.phone} onChange={(event) => setProfile({...profile, phone:event.target.value})} className="w-full p-2 outline-none rounded-md mb-2 bg-white"/> 
                          <label className="font-bold">Specialty</label>

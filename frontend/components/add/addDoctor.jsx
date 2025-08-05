@@ -7,8 +7,8 @@ import { toast } from "react-toastify"
 const AddDoctor = () => {
     const navigate = useNavigate()
     const [doctor,setDoctor] = useState({
-        firstName:'',
-        lastName:'',
+        dfirstName:'',
+        dlastName:'',
         email:'',
         phone:'',
         specialization:'',
@@ -20,8 +20,8 @@ const AddDoctor = () => {
     const handleSubmit = (event) => {
         event.preventDefault()
         const formData = new FormData()
-        formData.append('firstName',doctor.firstName)
-        formData.append('lastName',doctor.lastName)
+        formData.append('firstName',doctor.dfirstName)
+        formData.append('lastName',doctor.dlastName)
         formData.append('email',doctor.email)
         formData.append('phone',doctor.phone)
         formData.append('specialization',doctor.specialization)
@@ -49,9 +49,9 @@ const AddDoctor = () => {
         <div className="p-8">
             <form className="w-[50%] ml-[25%] rounded-sm shadow-md bg-white p-3" onSubmit={handleSubmit}>
                 <label>first name</label>
-                <input type="text" name="firstname" required onChange={(event)=> setDoctor({...doctor, firstName:event.target.value})} placeholder="Enter first name" className="w-full bg-white p-1 outline-none rounded-sm mb-2"/>
+                <input type="text" name="firstname" required onChange={(event)=> setDoctor({...doctor, dfirstName:event.target.value})} placeholder="Enter first name" className="w-full bg-white p-1 outline-none rounded-sm mb-2"/>
                 <label>last name</label>
-                <input type="text" name="lastname" required onChange={(event)=> setDoctor({...doctor, lastName:event.target.value})}  placeholder="Enter last name" className="w-full bg-white p-1 outline-none mb-2 rounded-sm"/>
+                <input type="text" name="lastname" required onChange={(event)=> setDoctor({...doctor, dlastName:event.target.value})}  placeholder="Enter last name" className="w-full bg-white p-1 outline-none mb-2 rounded-sm"/>
                 <label>email</label>
                 <input type="email" name="email" required onChange={(event)=> setDoctor({...doctor, email:event.target.value})}  placeholder="Enter email eg. johndoe@gmail.com" className="w-full bg-white p-1 outline-none mb-2 rounded-sm"/>
                 <label>phone</label>

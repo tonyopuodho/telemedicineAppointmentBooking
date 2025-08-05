@@ -50,8 +50,8 @@ const ManageDoctors = () => {
                                     <td className="p-2 w-[15%]"> 
                                         <img src={`http://localhost:3000/images/` + items.image} alt=""  className=" h-30 w-30"/>
                                     </td>
-                                    <td>{items.firstName}</td>
-                                    <td>{items.lastName}</td>
+                                    <td>{items.dfirstName}</td>
+                                    <td>{items.dlastName}</td>
                                     <td>{items.phone}</td>
                                     <td>{items.specialization}</td>
                                     <td>{items.schedule}</td>
