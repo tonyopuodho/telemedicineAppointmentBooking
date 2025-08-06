@@ -1,8 +1,10 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
+import { toast } from 'react-toastify'
 
 const DoctorAppointment = () => {
   const [appointment, setAppointment] = useState([])
+  const[pastAppointment, setPastAppointment] = useState([])
 
   useEffect(() => {
     axios.get('http://localhost:3000/api/username')
@@ -21,6 +23,47 @@ const DoctorAppointment = () => {
     .catch((error) => console.log(error))
   },[])
 
+  useEffect(() => {
+    axios.get('http://localhost:3000/api/username')
+     .then(result => {
+      if (result.data.valid) {
+        const doctorid = result.data.doctorId
+        axios.get(`http://localhost:3000/api/doctorsAppointment/${doctorid}`)
+        .then((result) => {
+          if (result.data.status) {
+            setPastAppointment(result.data.Result)
+          }
+        })
+        .catch((error) => console.log(error))
+      }
+    })
+    .catch((error) => console.log(error))
+  },[])
+  
+  const handlecomplete = (id) => {
+    axios.put(`http://localhost:3000/api/completeAppointment/${id}`)
+    .then((result) => {
+      if (result.data.status) {
+        toast.success(result.data.message)
+      } else {
+        toast.error("An error occured")
+      }
+    })
+    .catch((error) => console.log(error))    
+  }
+
+  const handleCancel = (id) => {
+  axios.put(`http://localhost:3000/api/cancelAppointment/${id}`)
+  .then((result) => {
+    if (result.data.status) {
+      toast.error(result.data.message)
+      window.location.reload()
+    } else {
+      toast.error("An error occured")
+    }
+  })
+  .catch((error) => console.log(error))    
+}
 
     return (
         <div className="p-4 flex flex-col">
@@ -38,13 +81,13 @@ const DoctorAppointment = () => {
                     <tbody className="text-center font-bold">
                        {
                          appointment.map((item,index) => (
-                            <tr key={index}>
-                              <td>{item.dfirstName}</td>
+                            <tr key={index} className="">
+                              <td className="p-2">{item.dfirstName}</td>
                               <td>{item.firstName}</td>
                               <td>{item.date}</td>
                               <td>{item.time}</td>
                               <td>{item.status}</td>
-                              <td><button>complete</button> <button>cancel</button></td>
+                              <td className="w-[20%]"><button onClick={() => handlecomplete(item.time)} className="cursor-pointer card p-1 rounded-sm outline-none">complete</button> <button onClick={() => handleCancel(item.time)} className="cursor-pointer outline-none bg-red-400 p-1 rounded-sm">cancel</button></td>
                           </tr>
                          ))
                        }
@@ -62,62 +105,17 @@ const DoctorAppointment = () => {
                         <th>Status</th>
                     </thead>
                     <tbody className="text-center font-bold">
-                        <tr>
-                            <td>Tony</td>
-                            <td>Roseline</td>
-                            <td>2/3/2023</td>
-                            <td>8:00</td>
-                            <td>completed</td>
-                        </tr>
-                            <tr>
-                            <td>Tony</td>
-                            <td>Roseline</td>
-                            <td>2/3/2023</td>
-                            <td>8:00</td>
-                            <td>completed</td>
-                        </tr>
-                            <tr>
-                            <td>Tony</td>
-                            <td>Roseline</td>
-                            <td>2/3/2023</td>
-                            <td>8:00</td>
-                            <td>completed</td>
-                        </tr>
-                               <tr>
-                            <td>Tony</td>
-                            <td>Roseline</td>
-                            <td>2/3/2023</td>
-                            <td>8:00</td>
-                            <td>completed</td>
-                        </tr>
-                               <tr>
-                            <td>Tony</td>
-                            <td>Roseline</td>
-                            <td>2/3/2023</td>
-                            <td>8:00</td>
-                            <td>completed</td>
-                        </tr>
-                               <tr>
-                            <td>Tony</td>
-                            <td>Roseline</td>
-                            <td>2/3/2023</td>
-                            <td>8:00</td>
-                            <td>completed</td>
-                        </tr>
-                               <tr>
-                            <td>Tony</td>
-                            <td>Roseline</td>
-                            <td>2/3/2023</td>
-                            <td>8:00</td>
-                            <td>completed</td>
-                        </tr>
-                               <tr>
-                            <td>Tony</td>
-                            <td>Roseline</td>
-                            <td>2/3/2023</td>
-                            <td>8:00</td>
-                            <td>completed</td>
-                        </tr>
+                      {
+                        pastAppointment.map((item,index) => (
+                          <tr key={index}>
+                              <td>{item.dfirstName}</td>
+                              <td>{item.firstName}</td>
+                              <td>{item.date}</td>
+                              <td>{item.time}</td>
+                              <td>{item.status}</td>
+                          </tr> 
+                        ))
+                      }                  
                     </tbody>
                 </table>
             </div>
