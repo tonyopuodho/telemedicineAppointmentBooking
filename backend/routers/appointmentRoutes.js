@@ -5,4 +5,7 @@ const router = Router()
 router.post("/bookAppointment",appointmentControllers.bookAppointment)
 router.get("/appointment",appointmentControllers.getAppointment)
 router.get("/doctorAppointment/:id",appointmentControllers.doctorAppointment)
+router.get("/doctorsAppointment/:id",appointmentControllers.doctorsAppointment)
+router.put("/completeAppointment/:id",appointmentControllers.completeAppointment)
+router.put("/cancelAppointment/:id",appointmentControllers.cancelAppointment)
 export default router
