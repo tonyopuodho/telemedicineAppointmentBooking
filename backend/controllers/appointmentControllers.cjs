@@ -14,3 +14,30 @@ exports.bookAppointment = (request,response) => {
         console.log(error)        
     }
 }
+
+exports.getAppointment = (request,response) => {
+    try {
+        const sqlQuery = "select dfirstName,firstName,date,time,status from appointment inner join doctor on doctor.doctorId = appointment.doctor_id inner join patient on patient.patientId = appointment.patient_id"
+        conn.query(sqlQuery, (error, result) => {
+            if (error) return response.json({status: false, message:"Querry error"})
+            
+            return response.status(200).json({status:true, Result:result})
+        })
+    } catch (error) {
+        console.log("An error occured")
+    }
+}
+
+exports.doctorAppointment = (request,response) => {
+    const { id } = request.params
+    try {
+        const sqlQuery = "select dfirstName,firstName,date,time,status from appointment inner join doctor on doctor.doctorId = appointment.doctor_id inner join patient on patient.patientId = appointment.patient_id WHERE doctor_id = ? AND status = 'pending'"
+        conn.query(sqlQuery,[id], (error,result) => {
+            if (error) return response.json({status: false, message:"Query error"})
+            
+            return response.status(200).json({status:true, Result: result})
+        })
+    } catch (error) {
+        console.log(error)        
+    }
+}
