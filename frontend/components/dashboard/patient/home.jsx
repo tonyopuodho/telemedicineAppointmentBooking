@@ -25,7 +25,7 @@ const PatientHome = () => {
                     <div key={index} className="flex p-4 flex-col shadow-md rounded-sm mt-2">
                         <img src={`http://localhost:3000/images/` + item.image} alt=""/>
                         <div className="pt-2 mb-2">
-                            <p><span className="font-bold">Name:</span> {item.firstName} {item.lastName}</p>
+                            <p><span className="font-bold">Name:</span> {item.dfirstName} {item.dlastName}</p>
                             <p><span className="font-bold">Specialty:</span> {item.specialization}</p>
                             <p><span className="font-bold">Schedule</span> {item.schedule}</p>
                         </div>

@@ -67,7 +67,7 @@ const BookAppointment = () => {
                         <div key={index} className="p-4 rounded-sm shadow-md w-[50%] mb-3 flex gap-12 mt-3">
                         <img src={`http://localhost:3000/images/` + item.image} alt="" />
                         <div className="pt-2 mb-2 mt-3">
-                            <p><span className="font-bold">Name:</span> {item.firstName} {item.lastName}</p>
+                            <p><span className="font-bold">Name:</span> {item.dfirstName} {item.dlastName}</p>
                             <p><span className="font-bold">Specialty:</span> {item.specialization}</p>
                             <p><span className="font-bold">Schedule</span> {item.schedule}</p>
                             <p><span className="font-bold">Phone:</span> {item.phone}</p>
@@ -83,7 +83,7 @@ const BookAppointment = () => {
                    <div className="flex gap-12 p-2">
                     <div className="flex flex-col w-full">
                          <label htmlFor="" className="font-bold">Doctor's Name</label>
-                         <input type="text" value={doctor.map((index, key) => index.firstName)} className="w-full p-2 outline-none"/>
+                         <input type="text" value={doctor.map((index, key) => index.dfirstName)} className="w-full p-2 outline-none"/>
                     </div>
                       <div className="flex flex-col w-full">
                          <label htmlFor="" className="font-bold">patient's Name</label>

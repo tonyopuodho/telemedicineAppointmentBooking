@@ -1,5 +1,20 @@
+import { useState } from "react"
+import axios from 'axios'
+import { useEffect } from "react"
 
 const Appointment = () => { 
+    const [appointment, setAppointment] = useState([])
+    useEffect(() => {
+        axios.get('http://localhost:3000/api/appointment')
+        .then(result => {
+            if (result.data.status) {
+                setAppointment(result.data.Result)
+            }
+        })
+        .catch(error => console.log(error))
+
+    },[])
+   console.log(appointment)
     return(
           <div className="p-6">
             <div className="p-4 shadow-sm mt-2 cardAp rounded-sm">
@@ -12,13 +27,18 @@ const Appointment = () => {
                             <th>Status</th>
                         </thead>
                         <tbody>
-                            <tr className="text-center font-bold ">
-                            <td className="p-2">Tony</td>
-                            <td>Roseline</td>
-                            <td>12/8/2025</td>
-                            <td>9:00</td>
-                            <td>pending</td>
+                         {
+                            appointment ?
+                            appointment.map((items,index) => (
+                            <tr className="text-center font-bold " key={index}>
+                                <td className="p-2">{items.dfirstName}</td>
+                                <td>{items.firstName}</td>
+                                <td>{items.date}</td>
+                                <td>{items.time}</td>
+                                <td>{items.status}</td>
                             </tr>
+                            )) : <tr className="col-span-5 text-center font-bold text-md"> <p>No appoinments made</p></tr>
+                         }
                         </tbody>
                     </table>                
             </div>
