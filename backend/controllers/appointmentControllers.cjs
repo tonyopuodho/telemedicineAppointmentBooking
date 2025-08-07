@@ -41,10 +41,24 @@ exports.doctorAppointment = (request,response) => {
     }
 }
 
+exports.patientAppointment = (request,response) => {
+    const { id } = request.params
+    try {
+        const sqlQuery = "select dfirstName,firstName,date,time,status from appointment inner join doctor on doctor.doctorId = appointment.doctor_id inner join patient on patient.patientId = appointment.patient_id WHERE patient_id = ?"
+        conn.query(sqlQuery,[id], (error,result) => {
+            if (error) return response.json({status: false, message:"Query error"})
+            
+            return response.status(200).json({status:true, Result: result})
+        })
+    } catch (error) {
+        console.log(error)        
+    }
+}
+
 exports.doctorsAppointment = (request,response) => {
        const { id } = request.params
     try {
-        const sqlQuery = "select dfirstName,firstName,date,time,status from appointment inner join doctor on doctor.doctorId = appointment.doctor_id inner join patient on patient.patientId = appointment.patient_id WHERE doctor_id = ?"
+        const sqlQuery = "select dfirstName,firstName,date,time,status from appointment inner join doctor on doctor.doctorId = appointment.doctor_id inner join patient on patient.patientId = appointment.patient_id WHERE doctor_id = ? AND status = 'completed' OR status = 'canceled'"
         conn.query(sqlQuery,[id], (error,result) => {
             if (error) return response.json({status: false, message:"Query error"})
             

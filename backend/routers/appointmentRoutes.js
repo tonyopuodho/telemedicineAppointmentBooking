@@ -11,4 +11,5 @@ router.put("/cancelAppointment/:id",appointmentControllers.cancelAppointment)
 router.get("/countCancel",appointmentControllers.countCancel)
 router.get("/countComplete",appointmentControllers.countComplete)
 router.get("/countPending",appointmentControllers.countPending)
+router.get("/patientAppointment/:id",appointmentControllers.patientAppointment)
 export default router
