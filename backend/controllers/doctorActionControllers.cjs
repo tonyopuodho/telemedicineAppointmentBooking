@@ -123,6 +123,61 @@ exports.countDoctor = (request,response) => {
     })
 }
 
+exports.countSunday = (request,response) => {
+    const sqlQuery = "SElECT COUNT(schedule) AS day from doctor where schedule = 'sunday'"
+    conn.query(sqlQuery, (error,result) => {
+        if (error) return response.json({status: false, message:"Query error"})        
+        return response.status(200).json({status:true, Result:result})
+    })
+}
+
+exports.countMonday = (request,response) => {
+    const sqlQuery = "SElECT COUNT(schedule) AS day from doctor where schedule = 'monday'"
+    conn.query(sqlQuery, (error,result) => {
+        if (error) return response.json({status: false, message:"Query error"})        
+        return response.status(200).json({status:true, Result:result})
+    })
+}
+
+exports.countTuesday = (request,response) => {
+    const sqlQuery = "SElECT COUNT(schedule) AS day from doctor where schedule = 'tuesday'"
+    conn.query(sqlQuery, (error,result) => {
+        if (error) return response.json({status: false, message:"Query error"})        
+        return response.status(200).json({status:true, Result:result})
+    })
+}
+
+exports.countWednesday = (request,response) => {
+    const sqlQuery = "SElECT COUNT(schedule) AS day from doctor where schedule = 'wednesday'"
+    conn.query(sqlQuery, (error,result) => {
+        if (error) return response.json({status: false, message:"Query error"})        
+        return response.status(200).json({status:true, Result:result})
+    })
+}
+
+exports.countThursday = (request,response) => {
+    const sqlQuery = "SElECT COUNT(schedule) AS day from doctor where schedule = 'thursday'"
+    conn.query(sqlQuery, (error,result) => {
+        if (error) return response.json({status: false, message:"Query error"})        
+        return response.status(200).json({status:true, Result:result})
+    })
+}
+
+exports.countFriday = (request,response) => {
+    const sqlQuery = "SElECT COUNT(schedule) AS day from doctor where schedule = 'friday'"
+    conn.query(sqlQuery, (error,result) => {
+        if (error) return response.json({status: false, message:"Query error"})        
+        return response.status(200).json({status:true, Result:result})
+    })
+}
+
+exports.countSaturday = (request,response) => {
+    const sqlQuery = "SElECT COUNT(schedule) AS day from doctor where schedule = 'saturday'"
+    conn.query(sqlQuery, (error,result) => {
+        if (error) return response.json({status: false, message:"Query error"})        
+        return response.status(200).json({status:true, Result:result})
+    })
+}
 exports.updateDoctor = (request,response) => {
     const {dfirstName,dlastName,email,phone,specialty,schedule,id} = request.body
     try {

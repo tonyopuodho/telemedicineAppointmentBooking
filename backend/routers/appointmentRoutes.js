@@ -12,4 +12,5 @@ router.get("/countCancel",appointmentControllers.countCancel)
 router.get("/countComplete",appointmentControllers.countComplete)
 router.get("/countPending",appointmentControllers.countPending)
 router.get("/patientAppointment/:id",appointmentControllers.patientAppointment)
+router.get("/countDoctorAppoinment",appointmentControllers.countDoctor)
 export default router

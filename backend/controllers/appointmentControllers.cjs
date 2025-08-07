@@ -132,3 +132,15 @@ exports.countPending = (request,response) => {
         console.log(error)
     }
 }
+
+exports.countDoctor = (request,response) => {
+    try {
+        const sqlQuery = " select count( dfirstName) AS doctor from appointment inner join doctor on doctor.doctorId = appointment.doctor_id inner join patient on patient.patientId = appointment.patient_id where status = 'pending'"
+        conn.query(sqlQuery,(error, result) => {
+            if (error) return response.json({status: false, message:"Querry error"})
+            return response.status(200).json({status:true, Result:result})
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
