@@ -30,7 +30,7 @@ const Appointment = () => {
                          {
                             appointment ?
                             appointment.map((items,index) => (
-                            <tr className="text-center font-bold " key={index}>
+                            <tr className="text-center" key={index}>
                                 <td className="p-2">{items.dfirstName}</td>
                                 <td>{items.firstName}</td>
                                 <td>{items.date}</td>

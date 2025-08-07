@@ -78,7 +78,7 @@ const DoctorAppointment = () => {
                         <th>Status</th>
                         <th>Action</th>
                     </thead>
-                    <tbody className="text-center font-bold">
+                    <tbody className="text-center">
                        {
                          appointment.map((item,index) => (
                             <tr key={index} className="">
@@ -104,7 +104,7 @@ const DoctorAppointment = () => {
                         <th>Time</th>
                         <th>Status</th>
                     </thead>
-                    <tbody className="text-center font-bold">
+                    <tbody className="text-center ">
                       {
                         pastAppointment.map((item,index) => (
                           <tr key={index}>
