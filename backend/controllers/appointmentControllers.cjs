@@ -82,3 +82,39 @@ exports.cancelAppointment = (request,response) => {
         console.log(error)
     }
 }
+
+exports.countCancel = (request,response) => {
+    try {
+        const sqlQuery = "SELECT COUNT(status) AS cancel FROM appointment WHERE status = 'canceled'"
+        conn.query(sqlQuery,(error, result) => {
+            if (error) return response.json({status: false, message:"Querry error"})
+            return response.status(200).json({status:true, Result:result})
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.countComplete = (request,response) => {
+    try {
+        const sqlQuery = "SELECT COUNT(status) AS complete FROM appointment WHERE status = 'completed'"
+        conn.query(sqlQuery,(error, result) => {
+            if (error) return response.json({status: false, message:"Querry error"})
+            return response.status(200).json({status:true, Result:result})
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.countPending = (request,response) => {
+    try {
+        const sqlQuery = "SELECT COUNT(status) AS pending FROM appointment WHERE status = 'pending'"
+        conn.query(sqlQuery,(error, result) => {
+            if (error) return response.json({status: false, message:"Querry error"})
+            return response.status(200).json({status:true, Result:result})
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
