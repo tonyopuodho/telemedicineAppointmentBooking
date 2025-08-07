@@ -17,7 +17,7 @@ const Appointment = () => {
    console.log(appointment)
     return(
           <div className="p-6">
-            <div className="p-4 shadow-sm mt-2 cardAp rounded-sm">
+            <div className="p-4 shadow-sm mt-2 cardAp rounded-sm h-[80vh] overflow-auto">
                     <table className="w-full">
                         <thead className="text-center">
                             <th>Doctor's name</th>

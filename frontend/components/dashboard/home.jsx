@@ -5,6 +5,15 @@ const Home = () => {
     const [countDoctor,setCountDoctor] = useState(0)
     const [countPatient,setCountPatient] = useState(0)
     const [countFeedBack,setCountFeedback] = useState(0)
+    const [pending,setPending] = useState(0)
+    const [doctors, setDoctor] = useState(0)
+    const [sunday, setSunday] = useState(0)
+    const [monday, setMonday] = useState(0)
+    const [tuesday, setTuesday] = useState(0)
+    const [wednesday,setWednesday] = useState(0)
+    const [thursday,setThursday] = useState(0)
+    const [friday,setFriday] = useState(0)
+    const [saturday,setSaturday] = useState(0)
     useEffect(() => {
         axios.get('http://localhost:3000/api/countDoctor')
         .then(result => {
@@ -29,9 +38,65 @@ const Home = () => {
             }
         })
         .catch(error => console.log(error))
+        
+        axios.get('http://localhost:3000/api/countPending')
+        .then(result => {
+            if (result.data.status) {
+                setPending(result.data.Result[0])
+            }
+        })
+        .catch((error) => console.log(error))
 
+        axios.get("http://localhost:3000/api/countDoctorAppoinment")
+        .then((result) => {
+            if (result.data.status) {
+                setDoctor(result.data.Result[0])
+            }})
+        .catch((error) => console.log(error)) 
+        
+         axios.get('http://localhost:3000/api/countSun')
+        .then(result => {
+            if (result.data.status) {
+                setSunday(result.data.Result[0].day)
+            }
+        })
+        axios.get('http://localhost:3000/api/countMon')
+        .then(result => {
+            if (result.data.status) {
+                setMonday(result.data.Result[0].day)
+            }
+        })
+        axios.get('http://localhost:3000/api/countTue')
+        .then(result => {
+            if (result.data.status) {
+                setTuesday(result.data.Result[0].day)
+            }
+        })
+        axios.get('http://localhost:3000/api/countWed')
+        .then(result => {
+            if (result.data.status) {
+                setWednesday(result.data.Result[0].day)
+            }
+        })
+        axios.get('http://localhost:3000/api/countThur')
+        .then(result => {
+            if (result.data.status) {
+                setThursday(result.data.Result[0].day)
+            }
+        })
+        axios.get('http://localhost:3000/api/countFri')
+        .then(result => {
+            if (result.data.status) {
+                setFriday(result.data.Result[0].day)
+            }
+        })
+        axios.get('http://localhost:3000/api/countSat')
+        .then(result => {
+            if (result.data.status) {
+                setSaturday(result.data.Result[0].day)
+            }
+        })
     },[])
-
     return (
         <div className="p-6">
              <div className="p-6 grid md:grid-cols-3 gap-12 grid-cols-1">
@@ -67,9 +132,9 @@ const Home = () => {
                         </thead>
                         <tbody>
                             <tr className="text-center font-bold">
-                                <td className="p-2">0</td>
-                                <td>0</td>
-                                <td>0</td>
+                                <td className="p-2">{pending.pending}</td>
+                                <td>{doctors.doctor}</td>
+                                <td>{pending.pending}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -88,13 +153,13 @@ const Home = () => {
                         </thead>
                         <tbody>
                             <tr className="text-center font-bold">
-                            <td className="p-2">0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
+                            <td className="p-2">{sunday}</td>
+                            <td>{monday}</td>
+                            <td>{tuesday}</td>
+                            <td>{wednesday}</td>
+                            <td>{thursday}</td>
+                            <td>{friday}</td>
+                            <td>{saturday}</td>
                             </tr>
                         </tbody>
                     </table>

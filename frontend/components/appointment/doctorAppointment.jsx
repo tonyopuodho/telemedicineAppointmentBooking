@@ -45,6 +45,7 @@ const DoctorAppointment = () => {
     .then((result) => {
       if (result.data.status) {
         toast.success(result.data.message)
+        window.location.reload()
       } else {
         toast.error("An error occured")
       }
@@ -57,7 +58,7 @@ const DoctorAppointment = () => {
   .then((result) => {
     if (result.data.status) {
       toast.error(result.data.message)
-      window.location.reload()
+       window.location.reload()
     } else {
       toast.error("An error occured")
     }
