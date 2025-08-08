@@ -22,42 +22,45 @@ import AddDoctor from "../components/add/addDoctor"
 import EditDoctor from "../components/doctors/editDoctor"
 import DoctorLogin from "../components/login/doctorLogin"
 import BookAppointment from "../components/appointment/bookAppointment"
+import LandingPage from "../components/landingPage/homepage"
 
 
 function App() {
   
 
   return (
-    <Routes>
-      <Route path="register" element={<Register/>}/>
-      <Route path="/patientportal" element={<PatientLogin/>}/>
-      <Route path="/login" element={<LoginPage/>} />
-      <Route path="doctorLogin" element={<DoctorLogin/>}/>
-      <Route path="/doctorDashboard" element={<DoctorDashboard/>}>
-        <Route path="" element={<DoctorHome/>}></Route>
-        <Route path="/doctorDashboard/appointment" element={<DoctorAppointment/>}></Route>
-        <Route path="/doctorDashboard/calendar" element={<Calender/>}></Route>
-        <Route path="/doctorDashboard/profile" element={<DoctorProfile/>}></Route>
-      </Route>
-      <Route path="/patientDashboard" element={<DashboardPatient/>}>
-       <Route path="" element={<PatientHome/>}></Route>
-       <Route path="/patientDashboard/feedback" element={<PatientFeedback/>}></Route>
-       <Route path="/patientDashboard/appointment" element={<PatientAppointment/>}></Route>
-       <Route path="/patientDashboard/appointment/:id" element={<BookAppointment/>}></Route>
-       <Route path="/patientDashboard/calendar" element={<Calender/>}></Route>
-       <Route path="/patientDashboard/profile" element={<PatientProfile/>}></Route>
-      </Route>
-      <Route path="/dashboard" element={<Dashboard/>}>
-        <Route path="" element={<Home/>}></Route>
-        <Route path="/dashboard/manageDoctors" element={<ManageDoctors/>}></Route>
-        <Route path="/dashboard/manageDoctors/addDoctor" element={<AddDoctor/>}></Route>
-        <Route path="/dashboard/manageDoctors/:id" element={<EditDoctor/>}></Route>
-        <Route path="/dashboard/feedback" element={<FeedBack/>}></Route>
-        <Route path="/dashboard/appointment" element={<Appointment/>}></Route>
-        <Route path="/dashboard/calender" element={<Calender/>}></Route>
-        <Route path="/dashboard/patient" element={<Patients/>}></Route>
-      </Route>
-    </Routes>
+            <Routes>
+              <Route path="" element={<LandingPage/>}/>
+              <Route path="/register" element={<Register/>}/>
+              <Route path="/patientportal" element={<PatientLogin/>}/>
+              <Route path="/login" element={<LoginPage/>} />
+              <Route path="doctorLogin" element={<DoctorLogin/>}/>
+              <Route path="/doctorDashboard" element={<DoctorDashboard/>}>
+                <Route path="" element={<DoctorHome/>}></Route>
+                <Route path="/doctorDashboard/appointment" element={<DoctorAppointment/>}></Route>
+                <Route path="/doctorDashboard/calendar" element={<Calender/>}></Route>
+                <Route path="/doctorDashboard/profile" element={<DoctorProfile/>}></Route>
+              </Route>
+              <Route path="/patientDashboard" element={<DashboardPatient/>}>
+              <Route path="" element={<PatientHome/>}></Route>
+              <Route path="/patientDashboard/feedback" element={<PatientFeedback/>}></Route>
+              <Route path="/patientDashboard/appointment" element={<PatientAppointment/>}></Route>
+              <Route path="/patientDashboard/appointment/:id" element={<BookAppointment/>}></Route>
+              <Route path="/patientDashboard/calendar" element={<Calender/>}></Route>
+              <Route path="/patientDashboard/profile" element={<PatientProfile/>}></Route>
+              </Route>
+              <Route path="/dashboard" element={<Dashboard/>}>
+                <Route path="" element={<Home/>}></Route>
+                <Route path="/dashboard/manageDoctors" element={<ManageDoctors/>}></Route>
+                <Route path="/dashboard/manageDoctors/addDoctor" element={<AddDoctor/>}></Route>
+                <Route path="/dashboard/manageDoctors/:id" element={<EditDoctor/>}></Route>
+                <Route path="/dashboard/feedback" element={<FeedBack/>}></Route>
+                <Route path="/dashboard/appointment" element={<Appointment/>}></Route>
+                <Route path="/dashboard/calender" element={<Calender/>}></Route>
+                <Route path="/dashboard/patient" element={<Patients/>}></Route>
+              </Route>
+            </Routes>  
+
   )
 }
 

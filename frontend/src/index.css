@@ -33,3 +33,6 @@ input{
 .cardAp{
   background-color: #C8E6C9;
 }
+.slick-slide > div{
+  margin:0 10px;
+}
